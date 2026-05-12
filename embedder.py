@@ -3,17 +3,17 @@ from PIL import Image
 import torch
 
 # Detect Apple Silicon GPU (M2)
-device = "mps" if torch.backends.mps.is_available() else "cpu"
+device = "cpu" if torch.backends.mps.is_available() else "cpu"
 
 print(f"Using device: {device}")
 
 # Load CLIP model
 model = CLIPModel.from_pretrained(
-    "openai/clip-vit-base-patch32"
+    "openai/clip-vit-base-patch16"
 )
 
 processor = CLIPProcessor.from_pretrained(
-    "openai/clip-vit-base-patch32"
+    "openai/clip-vit-base-patch16"
 )
 
 # Move model to GPU

@@ -40,11 +40,11 @@ six==1.17.0
 starlette==0.46.2
 sympy==1.14.0
 tokenizers==0.21.4
-torch==2.11.0
-torchvision==0.26.0
 tqdm==4.67.3
 transformers==4.51.3
 typing-inspection==0.4.2
 typing_extensions==4.15.0
 urllib3==2.7.0
 uvicorn==0.46.0
+torch==2.2.2
+torchvision==0.17.2
