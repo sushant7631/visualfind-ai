@@ -2,18 +2,30 @@ from transformers import CLIPProcessor, CLIPModel
 from PIL import Image
 import torch
 
-# Smaller lightweight model
 MODEL_NAME = "openai/clip-vit-base-patch16"
 
 device = "cpu"
 
-model = CLIPModel.from_pretrained(MODEL_NAME)
-processor = CLIPProcessor.from_pretrained(MODEL_NAME)
+model = None
+processor = None
 
-model.to(device)
+
+def load_model():
+
+    global model
+    global processor
+
+    if model is None:
+
+        model = CLIPModel.from_pretrained(MODEL_NAME)
+        processor = CLIPProcessor.from_pretrained(MODEL_NAME)
+
+        model.to(device)
 
 
 def encode_image(image_path):
+
+    load_model()
 
     image = Image.open(image_path).convert("RGB")
 
@@ -32,6 +44,8 @@ def encode_image(image_path):
 
 
 def encode_text(text):
+
+    load_model()
 
     inputs = processor(
         text=[text],
